@@ -8,3 +8,8 @@ Course materials for the Reinforcement Learning module at ZHAW (Zurich Universit
 - Understand the RL paradigm: agent, environment, actions, and rewards
 - Explore the exploration vs exploitation tradeoff
 - Implement epsilon-greedy and UCB algorithms from scratch
+
+### [Week 2: Q Learning](week2/)
+- Value Functions and Q-Values
+- The Q-Learning Algorithm
+- Value-Based vs Policy-Based Methods
