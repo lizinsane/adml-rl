@@ -1,2 +1,0 @@
-Environment generieren: python3 -m venv .venv
-Environment aktivieren: source .venv/bin/activate
