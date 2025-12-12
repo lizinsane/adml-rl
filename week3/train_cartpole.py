@@ -17,6 +17,13 @@ import torch.optim as optim
 import gymnasium as gym
 from pathlib import Path
 
+trained_model_path = 'week3/trained_policy.pth'
+training_curve_path = 'week3/training_curve.png'
+episodes = 2000 #1000
+learning_rate = 0.01 #0.01
+discount_factor = 0.99
+hidden_dim = 32 #32
+seed = 999 #42
 
 class PolicyNetwork(nn.Module):
     """Neural network policy for CartPole."""
@@ -133,7 +140,7 @@ def train_reinforce(env, policy, optimizer, n_episodes=1000, gamma=0.99,
     return episode_rewards, policy
 
 
-def plot_training_curve(rewards, save_path='training_curve.png'):
+def plot_training_curve(rewards, save_path=training_curve_path):
     """Plot and save training curve."""
     plt.figure(figsize=(12, 5))
     
@@ -196,23 +203,24 @@ def visualize_policy(policy, n_episodes=5):
     env.close()
 
 
+
 def main():
     parser = argparse.ArgumentParser(description='Train REINFORCE on CartPole')
-    parser.add_argument('--episodes', type=int, default=1000, 
+    parser.add_argument('--episodes', type=int, default=episodes, 
                         help='Number of training episodes (default: 1000)')
-    parser.add_argument('--lr', type=float, default=0.01,
+    parser.add_argument('--lr', type=float, default=learning_rate,
                         help='Learning rate (default: 0.01)')
-    parser.add_argument('--gamma', type=float, default=0.99,
+    parser.add_argument('--gamma', type=float, default=discount_factor,
                         help='Discount factor (default: 0.99)')
-    parser.add_argument('--hidden-dim', type=int, default=32,
+    parser.add_argument('--hidden-dim', type=int, default=hidden_dim,
                         help='Hidden layer size (default: 32)')
-    parser.add_argument('--seed', type=int, default=42,
+    parser.add_argument('--seed', type=int, default=seed,
                         help='Random seed (default: 42)')
-    parser.add_argument('--save-model', type=str, default='trained_policy.pth',
+    parser.add_argument('--save-model', type=str, default=trained_model_path,
                         help='Path to save trained model (default: trained_policy.pth)')
     parser.add_argument('--visualize', action='store_true',
                         help='Visualize trained policy (requires --model)')
-    parser.add_argument('--model', type=str, default='trained_policy.pth',
+    parser.add_argument('--model', type=str, default=trained_model_path,
                         help='Path to model for visualization')
     parser.add_argument('--no-plot', action='store_true',
                         help='Disable plotting')

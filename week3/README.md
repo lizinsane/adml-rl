@@ -158,7 +158,7 @@ python train_cartpole.py --help
 - `--gamma`: Discount factor (default: 0.99)
 - `--hidden-dim`: Hidden layer size (default: 32)
 - `--seed`: Random seed (default: 42)
-- `--save-model`: Path to save model (default: trained_policy.pth)
+- `--save-model`: Path to save model (default: week3/trained_policy.pth)
 - `--no-plot`: Disable plotting (useful for servers)
 
 ---
